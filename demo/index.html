@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		img {
+			display: block;
+			width: 100%;
+		}
+	</style>
+</head>
+
+<body>
+	<script>
+		window.__monitor__.init({
+			projectName: 'test',
+			userId: '0',
+			parts: {
+				performance: {
+					percent: 100
+				},
+				resource: {
+					percent: 100,
+					include: [
+						'cdn.sohucs.com/images/'
+					]
+				},
+				error: {
+
+				},
+				xhr: {
+					percent: 100,
+				}
+			}
+		})
+	</script>
+	<div>
+		<img src="https://5b0988e595225.cdn.sohucs.com/images/20200119/cd7500721286404b95c48626a20cf7eb.jpeg" alt="">
+		<img src="https://apic.douyucdn.cn/upload/avatar/021/85/17/51_avatar_middle.jpg" alt="">
+	</div>
+
+	<script>
+		const query = encodeURIComponent(`{
+			performanceList(limit: 1000) {
+				prevPage,
+			}
+		}`);
+		const xhr = new XMLHttpRequest();
+		xhr.open('GET', '/query?query=' + query);
+		xhr.send();
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState === 4) {
+				if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
+					console.log("响应值：", xhr)
+				}
+			}
+		}
+
+		fetch('http://localhost:8001/query?query=' + query).catch(error => {
+			console.error('错误', error);
+		})
+
+		function foo() {
+			return a;
+		}
+		foo()
+	</script>
+</body>
+
+</html>
