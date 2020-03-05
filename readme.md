@@ -8,5 +8,4 @@
 + 解sourcemap
 + navigator.sendBeacon
 + resource报错
-+ 做成webpack plugin
   

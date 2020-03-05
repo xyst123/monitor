@@ -3,7 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { resolve } = require('./utils');
 
 module.exports = {
-  entry: [resolve('sdk/index.js')],
+  entry: {
+    main:resolve('sdk/index.js'),
+  },
   output: {
     path: resolve('dist'),
     publicPath: '/',
