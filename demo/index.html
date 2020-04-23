@@ -49,7 +49,7 @@
 			}
 		}`);
 		const xhr = new XMLHttpRequest();
-		xhr.open('GET', '/query?query=' + query);
+		xhr.open('GET', 'http://182.92.99.223:8001/monitor?query=' + query);
 		xhr.send();
 		xhr.onreadystatechange = function () {
 			if (xhr.readyState === 4) {
@@ -59,7 +59,7 @@
 			}
 		}
 
-		fetch('http://localhost:8001/query?query=' + query).catch(error => {
+		fetch('http://182.92.99.223:8001/monitor?query=' + query).catch(error => {
 			console.error('错误', error);
 		})
 

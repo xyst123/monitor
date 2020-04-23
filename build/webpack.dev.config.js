@@ -11,7 +11,7 @@ const devConfig = {
   ],
   devServer: {
     proxy: {
-      '/query': 'http://localhost:8001'
+      '/query': 'http://182.92.99.233:8001'
     }
   }
 }

@@ -7,7 +7,7 @@ module.exports = {
     main:resolve('sdk/index.js'),
   },
   output: {
-    path: resolve('dist'),
+    path: resolve('server/sdk'),
     publicPath: '/',
     filename: '[name].[hash].js',
   },

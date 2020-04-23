@@ -22,8 +22,8 @@ module.exports = {
 			\`initTime\` bigint NOT NULL,
 			\`referer\` varchar(255) DEFAULT NULL,
 			\`ua\` varchar(255) DEFAULT NULL,
-			\`net\` varchar(255) DEFAULT NULL,
 			\`ip\` varchar(255) DEFAULT NULL,
+			\`net\` varchar(255) DEFAULT NULL,
 			\`createTime\` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 			PRIMARY KEY (\`id\`)
 		) ENGINE=InnoDB AUTO_INCREMENT=403 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;`,
@@ -40,15 +40,15 @@ module.exports = {
 			\`initTime\` bigint NOT NULL,
 			\`referer\` varchar(255) DEFAULT NULL,
 			\`ua\` varchar(255) DEFAULT NULL,
-			\`net\` varchar(255) DEFAULT NULL,
 			\`ip\` varchar(255) DEFAULT NULL,
+			\`net\` varchar(255) DEFAULT NULL,
 			\`createTime\` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 			PRIMARY KEY (\`id\`)
 		) ENGINE=InnoDB AUTO_INCREMENT=218 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;`,
 	resource: `CREATE TABLE \`resource\` (
 			\`id\` bigint NOT NULL AUTO_INCREMENT,
 			\`initiatorType\` varchar(255) DEFAULT NULL,
-			\`name\` varchar(255) DEFAULT NULL,
+			\`name\` varchar(1023) DEFAULT NULL,
 			\`duration\` bigint DEFAULT NULL,
 			\`redirect\` bigint DEFAULT NULL,
 			\`dns\` bigint DEFAULT NULL,

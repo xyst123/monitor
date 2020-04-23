@@ -6,6 +6,6 @@
 
 + 统计top95
 + 解sourcemap
-+ navigator.sendBeacon
 + resource报错
++ redis
   

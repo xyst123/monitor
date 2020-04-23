@@ -12,16 +12,17 @@ export const onload = (callback) => {
 }
 
 export const send = (type, data) => {
-	// const { sendBeacon } = window.navigator;
-	// if (sendBeacon) {
-	// 	const dataString = JSON.stringify({
-	// 		type,
-	// 		data
-	// 	});
-	// 	sendBeacon('http://localhost:8001/collect/monitor.gif', dataString);
-	// } else {
+	const { sendBeacon } = window.navigator;
+	if (sendBeacon) {
+		// 页面被卸载的时候（unload事件）也能发送请求
+		const dataString = JSON.stringify({
+			type,
+			data
+		});
+		window.navigator.sendBeacon(`${domain}/collect`, dataString);
+	} else {
 	(new Image()).src = `${domain}${pathname}?type=${type}&data=${JSON.stringify(data)}`
-	// }
+	}
 }
 
 export const getCombinedReg = (regArray) => {

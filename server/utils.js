@@ -7,21 +7,23 @@ const pool = mysql.createPool(poolConfig)
 const dbQuery = (sql, table) => new Promise((resolve, reject) => {
 	pool.getConnection((connectError, connection) => {
 		if (connectError) {
+			console.error(connectError);
 			reject(connectError);
-		}
-		connection.query(sql, {}, async (queryError, result) => {
-			connection.release();
-			if (queryError) {
-				const tableConfig = dbConfig[table];
-				if (queryError.code === 'ER_NO_SUCH_TABLE' && tableConfig) {
-					await dbQuery(tableConfig, table);
-					dbQuery(sql, table)
-				} else {
-					reject(queryError);
+		}else{
+			connection.query(sql, {}, async (queryError, result) => {
+				connection.release();
+				if (queryError) {
+					const tableConfig = dbConfig[table];
+					if (queryError.code === 'ER_NO_SUCH_TABLE' && tableConfig) {
+						await dbQuery(tableConfig, table);
+						dbQuery(sql, table)
+					} else {
+						reject(queryError);
+					}
 				}
-			}
-			resolve(result)
-		})
+				resolve(result)
+			})
+		}
 	})
 })
 

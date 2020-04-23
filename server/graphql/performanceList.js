@@ -1,13 +1,13 @@
-const { dbQuery, dbInsert, dbUpdate, dbSelect } = require('../utils');
+const { dbQuery } = require('../utils');
 const { GraphQLObjectType, GraphQLInt, GraphQLString, GraphQLList } = require('graphql');
+const { performance, collectCommon } = require('./schemas');
 
 const performanceSchema = new GraphQLObjectType({
 	name: 'performance',
-	fields: {
-		prevPage: {
-			type: GraphQLInt,
-		}
-	}
+	fields: () => ({
+		...performance,
+		...collectCommon
+	})
 })
 
 module.exports = {
@@ -24,7 +24,7 @@ module.exports = {
 	},
 	async resolve(parent, params) {
 		const { type, limit } = params;
-		const res = dbQuery(`select * from performance where type='${type}' and loaded>${limit}`, 'performance');
+		const res = dbQuery(`select * from performance where type='${type}' and \`load\`>${limit}`, 'performance');
 		return res
 	}
 }

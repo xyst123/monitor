@@ -15,7 +15,7 @@ const getSourcePerformanceData = (data) => {
 
 		// 接收过程
 		send: getPositiveValue(responseStart - requestStart),	// 请求从发送到接收时间
-		receive: getPositiveValue(responseEnd - responseStart),	// 请求从发送到接收时间
+		receive: getPositiveValue(responseEnd - responseStart),	// 请求接收时间
 		request: getPositiveValue(responseEnd - requestStart),	// 请求页面总耗时
 
 		// 核心指标
